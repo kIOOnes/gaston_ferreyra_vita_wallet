@@ -1,15 +1,16 @@
 from core.gestures import Gestures
 from core.elements import Elements
 from core.waits import Waits
-from selenium.webdriver.common.by import By
+from appium.webdriver.common.appiumby import AppiumBy
 
 # -------------------------
 # LOGIN LOCATORS
 # -------------------------
-START_SESSION_BUTTON = (By.XPATH, "")
-EMAIL_INPUT = (By.XPATH, "//android.widget.TextView[@text='Correo electrónico']/following-sibling::android.widget.EditText")
-PASSWORD_INPUT = (By.XPATH, '//android.widget.TextView[@text="Contraseña"]')
-LOGIN_BUTTON = (By.XPATH, '//android.widget.TextView[@text="Ingresar"]')
+
+START_SESSION_BUTTON = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Iniciar sesión")')
+EMAIL_INPUT = (AppiumBy.XPATH, '(//android.widget.EditText)[1]')
+PASSWORD_INPUT = (AppiumBy.XPATH, '(//android.widget.EditText)[2]')
+LOGIN_BUTTON = (AppiumBy.XPATH, '//android.widget.TextView[@text="Ingresar"]')
 
 # -------------------------
 # PAGE OBJECT
@@ -22,6 +23,7 @@ class LoginPage:
         self.waits = Waits(driver)
 
     def login(self, email, password):
+        self.elm.click(START_SESSION_BUTTON)
         self.elm.click(EMAIL_INPUT)
         self.elm.send_keys(EMAIL_INPUT,email)
         self.elm.click(PASSWORD_INPUT)
