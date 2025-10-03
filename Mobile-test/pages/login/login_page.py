@@ -6,7 +6,8 @@ from selenium.webdriver.common.by import By
 # -------------------------
 # LOGIN LOCATORS
 # -------------------------
-EMAIL_INPUT = (By.XPATH, '//android.widget.TextView[@text="Correo electrónico"]')
+START_SESSION_BUTTON = (By.XPATH, "")
+EMAIL_INPUT = (By.XPATH, "//android.widget.TextView[@text='Correo electrónico']/following-sibling::android.widget.EditText")
 PASSWORD_INPUT = (By.XPATH, '//android.widget.TextView[@text="Contraseña"]')
 LOGIN_BUTTON = (By.XPATH, '//android.widget.TextView[@text="Ingresar"]')
 
@@ -21,7 +22,9 @@ class LoginPage:
         self.waits = Waits(driver)
 
     def login(self, email, password):
-        self.elm.send_keys(EMAIL_INPUT, email)
-        self.elm.send_keys(PASSWORD_INPUT, password)
+        self.elm.click(EMAIL_INPUT)
+        self.elm.send_keys(EMAIL_INPUT,email)
+        self.elm.click(PASSWORD_INPUT)
+        self.elm.send_keys(PASSWORD_INPUT,password)
         self.elm.click(LOGIN_BUTTON)
 

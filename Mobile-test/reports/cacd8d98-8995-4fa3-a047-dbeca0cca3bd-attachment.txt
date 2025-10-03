@@ -1,0 +1,1 @@
+[DEBUG] Buscando elemento con locator: ('xpath', '//android.widget.TextView[@text="Correo electrónico"]') con derly+qa02@vitawallet.io

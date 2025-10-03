@@ -1,5 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import os
+import time
 
 class Elements:
     def __init__(self, driver, timeout=20):
@@ -14,5 +16,13 @@ class Elements:
         self.find_element(by_tuple, value).click()
 
     def send_keys(self, by_tuple, text, value=None):
-        self.find_element(by_tuple, value).send_keys(text)
-
+        print(f"[DEBUG] Buscando elemento con locator: {by_tuple} con {text}")
+        self.find_element(by_tuple).send_keys(text)
+    
+    #def adb_send_keys(self, text: str):
+    #    """Usa ADB a través del driver, no necesita device_name"""
+    #    escaped_text = text.replace(" ", "%s").replace("+", "%2B")
+    #    self.driver.execute_script("mobile: shell", {
+    #        "command": f'input text "{escaped_text}"'
+    #    })
+    #    time.sleep(0.5)

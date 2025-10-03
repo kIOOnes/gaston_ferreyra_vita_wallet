@@ -11,7 +11,7 @@ class BaseConfig:
     # General Appium capabilities
     # -------------------------
     PLATFORM_NAME = "Android"
-    AUTOMATION_NAME = "UiAutomator2"
+    
     NEW_COMMAND_TIMEOUT = 3600
     NO_RESET = True
     AUTO_GRANT_PERMISSIONS = True
@@ -24,10 +24,9 @@ class LocalConfig(BaseConfig):
     APPIUM_HOST = "127.0.0.1"
     APPIUM_PORT = 4723
     REMOTE_PATH = "/"
-
+    AUTOMATION_NAME = "UiAutomator2"
     DEVICE_NAME = "emulator-5554"
     PLATFORM_VERSION = "16.0"
-
     APP_PATH = r"C:\Users\pc\Downloads\VitaQA.apk"
     APP_PACKAGE = "com.vita_wallet"
     APP_ACTIVITY = "com.vita_wallet.MainActivity"
