@@ -8,6 +8,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 # -------------------------
 
 ACCEPT_BUTTON_POP_UP = (AppiumBy.ACCESSIBILITY_ID, "Entendido")
+CRYPTO_BUTTON = (AppiumBy.ACCESSIBILITY_ID, "Cripto")
 
 # -------------------------
 # PAGE OBJECT
@@ -21,4 +22,9 @@ class HomePage:
             self.waits = Waits(driver)
 
     def quit_pop_up(self, driver):
+        if(self.elm.is_present):
             self.elm.click(ACCEPT_BUTTON_POP_UP)
+        return
+    
+    def go_crypto(self, driver):
+        self.elm.click(CRYPTO_BUTTON)

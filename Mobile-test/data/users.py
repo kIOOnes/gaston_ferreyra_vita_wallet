@@ -8,7 +8,7 @@ class UserData:
         users = []
         with open(self.csv_file, newline='', encoding='utf-8') as file:
             reader = csv.reader(file)
-            next(reader)  # skip header
+            next(reader)
             for row in reader:
                 if len(row) >= 2:
                     email, password = row[0], row[1]

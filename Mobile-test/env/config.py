@@ -13,7 +13,7 @@ class BaseConfig:
     PLATFORM_NAME = "Android"
     
     NEW_COMMAND_TIMEOUT = 3600
-    NO_RESET = True
+    NO_RESET = False
     AUTO_GRANT_PERMISSIONS = True
     CONNECT_HARDWARE_KEYBOARD = True
 

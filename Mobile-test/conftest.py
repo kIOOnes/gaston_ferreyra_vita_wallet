@@ -2,21 +2,25 @@ import os
 import time
 import pytest
 import allure
-from appium.webdriver import Remote
 from appium import webdriver
+from appium.webdriver import Remote
 from appium.options.android import UiAutomator2Options
 from env.config import LocalConfig
+
 # -------------------------
 # Carpeta para screenshots
 # -------------------------
+
 SCREENSHOT_DIR = os.path.join(os.getcwd(), "screenshots")
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 # -------------------------
 # Fixture driver
 # -------------------------
+
 @pytest.fixture(scope="function")
 def driver():
+    
     config = LocalConfig()
 
     opts = UiAutomator2Options()
@@ -32,6 +36,15 @@ def driver():
     opts.set_capability("newCommandTimeout", config.NEW_COMMAND_TIMEOUT)
     opts.set_capability("connectHardwareKeyboard", True)
     command_executor = f"http://{config.APPIUM_HOST}:{config.APPIUM_PORT}"
-    driver_instance = Remote(command_executor=command_executor, options=opts)  # ✅
+    
+    # Inicializar driver
+    driver_instance = webdriver.Remote(command_executor=command_executor, options=opts)
+    
+    # Espera para asegurarse que la app arrancó
+    time.sleep(2)
+
     yield driver_instance
-    driver_instance.quit()
+
+    # Cerrar app al finalizar test
+   # driver_instance.terminate_app(config.APP_PACKAGE)
+   # driver_instance.quit()
