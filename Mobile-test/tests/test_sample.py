@@ -2,6 +2,7 @@ import pytest
 from pages.login.login_page import LoginPage
 from pages.home.home_page import HomePage
 from pages.crypto.crypto_buy_page import CryptoBuyPage
+from pages.crypto.crypto_confirm_page import CryptoConfirm
 from data.users import UserData
 
 @pytest.mark.parametrize("user", UserData("data/users.csv").get_users())
@@ -10,25 +11,30 @@ def test_login(driver, user):
 
     # -------------------------
     # A-A-A DESIGN PATTERN
-    # Arrange 1
+    # Arrange
     # -------------------------
     login_page = LoginPage(driver)
     
     # -------------------------
-    # Act 2
+    # Act
     # -------------------------
     login_page.login(user["email"], user["password"])
     
     # -------------------------
-    # Assert 3
+    # Assert
     # -------------------------
     #welcome_text_locator = ('xpath', '//android.widget.TextView[@text="Welcome"]')
     #assert login_page.el.find_element(welcome_text_locator).is_displayed(), "Login failed for user: {}".format(user["email"])
     
     home_page = HomePage(driver)
-    home_page.quit_pop_up(driver)
-    home_page.go_crypto(driver)
+    home_page.quit_pop_up()
+    home_page.go_crypto()
 
-    crypto_buy_page = crypto_buy_page(driver)
-    crypto_buy_pagehome_page.quit_pop_up(driver)
-    home_page.go_crypto(driver)
+    crypto_buy_page = CryptoBuyPage(driver)
+    crypto_buy_page.select_crypto_to_sell()
+    crypto_buy_page.enter_amount_to_sell(2000)
+    crypto_buy_page.select_crypto_to_buy()
+    crypto_buy_page.continue_operation()
+
+    crypto_confirm_page = CryptoConfirm(driver)
+    crypto_confirm_page.confirm()

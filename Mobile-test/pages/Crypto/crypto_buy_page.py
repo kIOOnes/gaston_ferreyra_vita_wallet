@@ -4,17 +4,15 @@ from core.waits import Waits
 from appium.webdriver.common.appiumby import AppiumBy
 
 # -------------------------
-# LOGIN LOCATORS
+# LOCATORS
 # -------------------------
 
-TYPE_SEND_SELECT = (AppiumBy.XPATH, '//android.view.ViewGroup[@index="12"]')
+TYPE_SELL_SELECT = (AppiumBy.XPATH, '//android.view.ViewGroup[@index="12"]')
 TYPE_BUY_SELECT = (AppiumBy.XPATH, '//android.view.ViewGroup[@index="16"]')
 SELL_AMOUNT_INPUT = (AppiumBy.XPATH, '(//android.widget.EditText)[1]')
-BUY_AMOUNT_INPUT =(AppiumBy.XPATH, '(//android.widget.EditText)[2]')
 ARS_SELECT = (AppiumBy.ACCESSIBILITY_ID, "ARS,   -  Peso Argentino")
-BTC_SELECT = (AppiumBy.ACCESSIBILITY_ID, "BTC,   -  Bitcoin")
+USDT_SELECT = (AppiumBy.ACCESSIBILITY_ID, "USDT,   -  USD Tether")
 CONTINUE_BUTTON = (AppiumBy.ACCESSIBILITY_ID, "Continuar")
-
 
 # -------------------------
 # PAGE OBJECT
@@ -27,19 +25,21 @@ class CryptoBuyPage:
             self.gestures = Gestures(driver)
             self.waits = Waits(driver)
     
-    def select_crypto_to_send(self, driver, crypto_type):
-            self.elm.click()
+    def select_crypto_to_sell(self):
+            self.elm.click(TYPE_SELL_SELECT)
+            self.elm.click(ARS_SELECT)
             return
     
-    def select_crypto_to_buy(self, driver, crypto_type):
+    def select_crypto_to_buy(self):
+            self.elm.click(TYPE_BUY_SELECT)
+            self.elm.click(USDT_SELECT)
             return
     
-    def enter_amount_to_sell(self, driver, amount):
-            
+    def enter_amount_to_sell(self, amount):
+            self.elm.click(SELL_AMOUNT_INPUT)
+            self.elm.send_keys(SELL_AMOUNT_INPUT,amount)
             return
     
-    def enter_amount_to_buy(self, driver, amount):
+    def continue_operation(self):
+            self.elm.click(CONTINUE_BUTTON)
             return
-
-    
-    

@@ -4,7 +4,7 @@ from core.waits import Waits
 from appium.webdriver.common.appiumby import AppiumBy
 
 # -------------------------
-# LOGIN LOCATORS
+# LOCATORS
 # -------------------------
 
 START_SESSION_BUTTON = (AppiumBy.ANDROID_UIAUTOMATOR, 'new UiSelector().text("Iniciar sesión")')

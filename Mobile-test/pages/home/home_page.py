@@ -21,10 +21,10 @@ class HomePage:
             self.gestures = Gestures(driver)
             self.waits = Waits(driver)
 
-    def quit_pop_up(self, driver):
+    def quit_pop_up(self):
         if(self.elm.is_present):
             self.elm.click(ACCEPT_BUTTON_POP_UP)
         return
     
-    def go_crypto(self, driver):
+    def go_crypto(self):
         self.elm.click(CRYPTO_BUTTON)
