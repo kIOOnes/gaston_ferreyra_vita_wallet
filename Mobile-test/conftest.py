@@ -8,14 +8,14 @@ from appium.options.android import UiAutomator2Options
 from env.config import LocalConfig
 
 # -------------------------
-# Carpeta para screenshots
+# SCREENSHOOT FOLDER
 # -------------------------
 
 SCREENSHOT_DIR = os.path.join(os.getcwd(), "screenshots")
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 # -------------------------
-# Fixture driver
+# FIXTURE DRIVER
 # -------------------------
 
 @pytest.fixture(scope="function")
@@ -35,6 +35,7 @@ def driver():
     opts.set_capability("autoGrantPermissions", config.AUTO_GRANT_PERMISSIONS)
     opts.set_capability("newCommandTimeout", config.NEW_COMMAND_TIMEOUT)
     opts.set_capability("connectHardwareKeyboard", True)
+    opts.set_capability("dontStopAppOnReset", True)
     command_executor = f"http://{config.APPIUM_HOST}:{config.APPIUM_PORT}"
     
     # Inicializar driver

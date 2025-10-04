@@ -35,7 +35,6 @@ class Elements:
             WebDriverWait(self.driver, timeout, poll_frequency).until(
                 lambda driver: self.driver.find_element(*locator).is_enabled()
             )
-            # Una vez habilitado, espera que sea clickable
             WebDriverWait(self.driver, timeout, poll_frequency).until(
                 EC.element_to_be_clickable(locator)
             )

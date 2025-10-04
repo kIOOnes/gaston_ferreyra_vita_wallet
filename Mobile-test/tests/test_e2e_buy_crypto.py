@@ -3,10 +3,11 @@ from pages.login.login_page import LoginPage
 from pages.home.home_page import HomePage
 from pages.crypto.crypto_buy_page import CryptoBuyPage
 from pages.crypto.crypto_confirm_page import CryptoConfirm
+from pages.crypto.crypto_successful_page import CryptoSuccesfulPage
 from data.users import UserData
 
 @pytest.mark.parametrize("user", UserData("data/users.csv").get_users())
-def test_login(driver, user):
+def test_e2e_buy_crypto(driver, user):
 
 
     # -------------------------
@@ -38,3 +39,10 @@ def test_login(driver, user):
 
     crypto_confirm_page = CryptoConfirm(driver)
     crypto_confirm_page.confirm()
+
+    crypto_successful_page = CryptoSuccesfulPage(driver)
+    crypto_successful_page.return_home()
+
+    home_page.view_last_movements()
+
+    

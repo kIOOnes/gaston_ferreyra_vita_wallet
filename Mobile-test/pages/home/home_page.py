@@ -9,6 +9,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 
 ACCEPT_BUTTON_POP_UP = (AppiumBy.ACCESSIBILITY_ID, "Entendido")
 CRYPTO_BUTTON = (AppiumBy.ACCESSIBILITY_ID, "Cripto")
+LAST_MOVEMENTS_BUTTON = (AppiumBy.XPATH, '(//android.view.ViewGroup[@clickable="true" and contains(@content-desc, "Intercambio")])[1]')
 
 # -------------------------
 # PAGE OBJECT
@@ -28,3 +29,7 @@ class HomePage:
     
     def go_crypto(self):
         self.elm.click(CRYPTO_BUTTON)
+
+    def view_last_movements(self):
+        self.waits.seconds_sleep(5)
+        self.elm.click(LAST_MOVEMENTS_BUTTON)
