@@ -24,16 +24,16 @@ Dev------->Version estable que usara el equipo QA. Unicamente por pull request c
 gaston---->Branch local. Permisos de pull y de push.
 
 
-## DOCUMENTACIÓN PARA QA AUTOMATIZADOR
+## Documentacion para QA Automatizador
 En docstring
-## DOCUMENTACION - Definiciones de Estructura y patrones. Convenciones.
+## Documentacion - Definiciones de Estructura y patrones. Convenciones.
 S.O.L.I.D ----------------------------> Estructura usada en la codificación orientada a objetos.
 Page Objects -------------------------> Patron de diseño para ordenar localizadores, elementos de pantalla, acciones.
 A.A.A (Arranque , Acción, Aserción)---> Patron de diseño para armar los test.
 PEP 8 --------------------------------> Nomenclatura del proyecto en python.
 Convencion de idioma: Ingles.
 
-## DOCUMENTACION - Estructura
+## Documentacion - Estructura
 ├── pages/           # Page objects -----> Pages/Funcionalidad/nombre_pageobject.py. Carpeta de hasta 3 niveles maximo. Agrupada por funcionalidad.
 ├── tests/           # Test script 
 ├── core/            # Helpers (Elements, Waits, Gestures)---> Aquí la codificación de los métodos que usaran los pages objects. Dividido por funcionalidad.Elements,Waits,Gestures.
