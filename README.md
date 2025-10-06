@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ## Configurar entorno local  
 Actualizar el documento localconfig, con los valores locales  
 ## Correr tests  
-pytest tests/test_sample.py -v -s --alluredir=allure-results  
+pytest tests/test_e2e_buy_crypto.py -v -s --alluredir=allure-results  
 ## Branches  
 Master---->Ultima version estable productiva. Por pull request.  
 Dev------->Version estable que usara el equipo QA. Unicamente por pull request con 1 aprobador/revisor.  
@@ -44,7 +44,7 @@ Convencion de idioma: Ingles.
 ├── data/-> Aqui iran los fixture y sus clases para ser usados para pruebas. Opcionalmente usar en gitignore datos sensibles.  
 ├── env/ -> Archivo de Configuración Local. Editar para cada máquina local.   
 ├── utils/ # Aqui iran las utilidades que se llamaran desde cualquier parte del proyecto.  
-├── env/  
+├── env1/ Entorno virtual. Aqui se instalan las dependencias.  
 └── README.md  
 Conftest.py          # Archivo de configuración para Appium
 
