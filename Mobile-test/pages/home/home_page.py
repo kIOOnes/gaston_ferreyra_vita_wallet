@@ -10,6 +10,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 ACCEPT_BUTTON_POP_UP = (AppiumBy.ACCESSIBILITY_ID, "Entendido")
 CRYPTO_BUTTON = (AppiumBy.ACCESSIBILITY_ID, "Cripto")
 LAST_MOVEMENTS_BUTTON = (AppiumBy.XPATH, '(//android.view.ViewGroup[@clickable="true" and contains(@content-desc, "Intercambio")])[1]')
+STATUS_OPERATION = (AppiumBy.XPATH, "//android.widget.TextView[@index='2']")
 
 # -------------------------
 # PAGE OBJECT
@@ -33,3 +34,7 @@ class HomePage:
     def view_last_movements(self):
         self.waits.seconds_sleep(5)
         self.elm.click(LAST_MOVEMENTS_BUTTON)
+
+    def get_status_operation(self):
+         self.waits.seconds_sleep(2)
+         return self.elm.get_text(STATUS_OPERATION)

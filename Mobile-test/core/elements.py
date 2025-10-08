@@ -43,3 +43,14 @@ class Elements:
         except TimeoutException:
             print(f"[WARN] El elemento {locator} no se habilito en {timeout} segundos.")
             return False
+    
+def get_text(self, by_tuple, value=None, timeout=20):
+    locator = (by_tuple, value) if value else by_tuple
+    try:
+        element = WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        )
+        return element.get_attribute("text")
+    except TimeoutException:
+        print(f"[FAIL] El elemento {locator} no se volvió visible en {timeout} segundos.")
+        return None

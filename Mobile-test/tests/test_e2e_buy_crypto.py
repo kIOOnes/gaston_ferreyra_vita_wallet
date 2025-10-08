@@ -5,13 +5,14 @@ from pages.crypto.crypto_buy_page import CryptoBuyPage
 from pages.crypto.crypto_confirm_page import CryptoConfirm
 from pages.crypto.crypto_successful_page import CryptoSuccesfulPage
 from data.users import UserData
+import time
 
 @pytest.mark.parametrize("user", UserData("data/users.csv").get_users())
 def test_e2e_buy_crypto(driver, user):
 
 
     # -------------------------
-    # A-A-A DESIGN PATTERN
+    # A-A-A DESIGN PATTERN (Arrange, Act, Assert)
     # Arrange
     # -------------------------
     login_page = LoginPage(driver)
@@ -20,12 +21,6 @@ def test_e2e_buy_crypto(driver, user):
     # Act
     # -------------------------
     login_page.login(user["email"], user["password"])
-    
-    # -------------------------
-    # Assert
-    # -------------------------
-    #welcome_text_locator = ('xpath', '//android.widget.TextView[@text="Welcome"]')
-    #assert login_page.el.find_element(welcome_text_locator).is_displayed(), "Login failed for user: {}".format(user["email"])
     
     home_page = HomePage(driver)
     home_page.quit_pop_up()
@@ -42,7 +37,12 @@ def test_e2e_buy_crypto(driver, user):
 
     crypto_successful_page = CryptoSuccesfulPage(driver)
     crypto_successful_page.return_home()
-
-    home_page.view_last_movements()
-
     
+    home_page.view_last_movements()
+  
+    # -------------------------
+    # Assert
+    # -------------------------
+    
+    status = home_page.get_status_operation()
+    assert status == "Completada", f"Se esperaba 'Completada' pero se obtuvo '{status}'"
