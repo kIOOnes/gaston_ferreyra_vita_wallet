@@ -4,13 +4,13 @@ JDK:11.0.2
 APPIUM:3.0.2  
 PYTHON:3.13.7  
 NPM: 8.19.2
-## Instalacion
+## Instalación
 Ir al directorio Local con bash  
 bash: git clone git@github.com:kIOOnes/gaston_ferreyra_vita_wallet.git  
 bash: cd gaston_ferreyra_vita_wallet  
 bash: cd Mobile-test  
 ## Crear y activar entorno virtual  
-en directorio mobile-test con bash  
+Enn directorio mobile-test con bash  
 bash: python -m venv env1  
 bash: .\env1\Scripts\activate    # Windows
 bash: source env1/bin/activate    # macOS/Linux
@@ -24,6 +24,9 @@ pytest tests/test_e2e_buy_crypto.py -v -s --alluredir=allure-results
 Master---->Ultima version estable productiva. Por pull request.  
 Dev------->Version estable que usara el equipo QA. Unicamente por pull request con 1 aprobador/revisor.  
 gaston---->Branch local. Permisos de pull y de push.  
+
+## Descripcion
+El flujo E2E valida el proceso completo de compra de criptomonedas desde la app, incluyendo el login del usuario, selección de la criptomoneda, ingreso del monto, confirmación de la transacción y verificación del estado final de la operación (‘Completada’ o ‘Rechazada’).
 
 
 ## Documentacion para QA Automatizador  
